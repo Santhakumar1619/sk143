@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Rotating Gradient Background */
+@keyframes backgroundAnimation {
+    0% { background: linear-gradient(45deg, #ff6b6b, #6a89cc); }
+    50% { background: linear-gradient(45deg, #ffcc5c, #88d8b0); }
+    100% { background: linear-gradient(45deg, #ff6b6b, #6a89cc); }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    min-height: 100vh;
+    color: aliceblue;
+    text-align: center;
+    position: relative;
+    animation: backgroundAnimation 12s infinite alternate ease-in-out;
+}
+
+
+/* Floating & Glowing Birthday Text */
+.text {
+    position: absolute;
+    top: 10%;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    animation: glowText 3s infinite alternate, textFloat 4s infinite ease-in-out;
+}
+
+/* Glow Effect */
+@keyframes glowText {
+    0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff6b6b; }
+    50% { text-shadow: 0 0 15px #ffcc5c, 0 0 25px #ff6b6b; }
+    100% { text-shadow: 0 0 5px #fff, 0 0 10px #6a89cc; }
+}
+
+/* Floating Effect */
+@keyframes textFloat {
+    0% { transform: translateY(-5px) scale(1); }
+    50% { transform: translateY(5px) scale(1.05); }
+    100% { transform: translateY(-5px) scale(1); }
+}
+
+/* Balloons Floating with Sideways Motion */
+.balloons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.balloon {
+    position: absolute;
+    width: 80px;
+    animation: floatBalloon 6s infinite ease-in-out alternate;
+}
+
+.balloon1 { left: 10%; animation-duration: 7s; }
+.balloon2 { left: 30%; animation-duration: 8s; }
+.balloon3 { left: 50%; animation-duration: 6s; }
+.balloon4 { left: 70%; animation-duration: 9s; }
+
+@keyframes floatBalloon {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) translateX(20px);
+        opacity: 0;
+    }
+}
+
+/* 3D Rotating Image Box */
+.box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    animation: rotate3D 12s linear infinite;
+}
+
+/* Smooth 3D Rotation */
+@keyframes rotate3D {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+/* Enhancing Individual Image Panels */
+.box span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i) * 36deg)) translateZ(250px);
+}
+
+/* Image Hover Effect */
+.box span img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid white;
+    border-radius: 18px;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+/* Scale & Rotate on Hover */
+.box span img:hover {
+    transform: scale(1.5) rotate(10deg);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8);
+}
